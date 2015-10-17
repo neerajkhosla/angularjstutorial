@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="personController.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="namesCtrl">
+        <p>uppercase filter</p>
+        <ul>
+            <li ng-repeat="obj in names">
+                {{obj.name | uppercase }}
+            </li>
+        </ul>
+        <p>orderby filter</p>
+        <ul>
+            <li ng-repeat="obj in names | orderBy:'name'">
+                {{obj.name}}
+            </li>
+        </ul>+
+        <p>input filter</p>
+        <input type="text" ng-model="filterString" />
+        <ul>
+            <li ng-repeat="obj in names | filter:filterString | orderBy:'country'">
+                {{ (obj.name | uppercase) + ', ' + obj.country }}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
